@@ -21,6 +21,25 @@ variable "project_id" {
   description = "The project ID to host the cluster in"
 }
 
+variable "node_pools_linux_node_configs_sysctls" {
+  type        = map(map(string))
+  description = "Map of maps containing linux node config sysctls by node-pool name"
+
+  default = {
+    all               = {}
+    default-node-pool = {}
+  }
+}
+variable "node_pools_cgroup_mode" {
+  type        = map(string)
+  description = "Map of strings containing cgroup node config by node-pool name"
+
+  default = {
+    all               = ""
+    default-node-pool = ""
+  }
+}
+
 variable "name" {
   type        = string
   description = "The name of the cluster"
